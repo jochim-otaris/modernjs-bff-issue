@@ -1,8 +1,15 @@
+import { useEffect } from 'react';
 import { Helmet } from '@modern-js/runtime/head';
 import './index.css';
+import { post } from "@api/hello";
 
-const Index = () => (
-  <div className="container-box">
+const Index = () => {
+
+  useEffect(() => {
+    post('This is a test message', { key: 'value' }, { data: { a: 12 }, query: { b: 13 } });
+  }, []);
+
+  return <div className="container-box">
     <Helmet>
       <link
         rel="icon"
@@ -91,6 +98,6 @@ const Index = () => (
       </div>
     </main>
   </div>
-);
+};
 
 export default Index;
